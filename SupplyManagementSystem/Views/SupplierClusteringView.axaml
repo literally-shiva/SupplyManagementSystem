@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+             xmlns:vm="using:SupplyManagementSystem.ViewModels"
+             xmlns:skiaSharpView="clr-namespace:LiveChartsCore.SkiaSharpView;assembly=LiveChartsCore.SkiaSharpView"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SupplyManagementSystem.Views.SupplierClusteringView"
+             x:DataType="vm:SupplierClusteringViewModel">
+
+    <UserControl.DataContext>
+        <vm:SupplierClusteringViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <lvc:CartesianChart Series="{Binding Series}">
+            <lvc:CartesianChart.XAxes>
+                <skiaSharpView:Axis Name="ax1"/>
+            </lvc:CartesianChart.XAxes>
+
+            <lvc:CartesianChart.YAxes>
+                <skiaSharpView:Axis Name="ay1"/>
+            </lvc:CartesianChart.YAxes>
+        </lvc:CartesianChart>
+    </Grid>
+</UserControl>

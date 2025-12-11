@@ -4,6 +4,10 @@
              x:Class="SupplyManagementSystem.Views.SuppliersView"
              x:DataType="vm:SuppliersViewModel">
     
+    <UserControl.DataContext>
+        <vm:SuppliersViewModel/>
+    </UserControl.DataContext>
+    
     <DataGrid ItemsSource="{Binding Suppliers}"
               AutoGenerateColumns="False"
               CanUserReorderColumns="True"
