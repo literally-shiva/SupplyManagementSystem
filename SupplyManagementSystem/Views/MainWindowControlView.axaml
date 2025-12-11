@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SupplyManagementSystem.ViewModels"
+             x:Class="SupplyManagementSystem.Views.MainWindowControlView"
+             x:DataType="vm:MainWindowControlViewModel">
+
+    <UserControl.Styles>
+        <StyleInclude Source="/Views/Styles.axaml"/>
+    </UserControl.Styles>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель с вкладками -->
+        <ListBox Grid.Column="0"
+                 ItemsSource="{Binding Tabs}"
+                 SelectedItem="{Binding SelectedTab}"
+                 BorderThickness="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="vm:TabModel">
+                    <StackPanel Orientation="Horizontal" Margin="5" Spacing="6">
+                        <TextBlock Text="{Binding Icon}" FontSize="16"/>
+                        <TextBlock Text="{Binding Title}" FontSize="14" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <GridSplitter Grid.Column="1" Width="5" Cursor="SizeWestEast"/>
+
+        <!-- Правая область с контентом выбранной вкладки -->
+        <ContentControl Grid.Column="2" Content="{Binding SelectedTab.Content}"/>
+    </Grid>
+</UserControl>

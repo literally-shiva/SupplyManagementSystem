@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SupplyManagementSystem.ViewModels"
+             x:Class="SupplyManagementSystem.Views.SuppliersView"
+             x:DataType="vm:SuppliersViewModel">
+    
+    <DataGrid ItemsSource="{Binding Suppliers}"
+              AutoGenerateColumns="False"
+              CanUserReorderColumns="True"
+              CanUserResizeColumns="True"
+              CanUserSortColumns="True">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*" />
+            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="120" />
+            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="150" />
+            <DataGridTextColumn Header="Качество (0–100)" Binding="{Binding Quality, StringFormat={}{0:F1}}" Width="120"/>
+            <DataGridTextColumn Header="Опыт (лет)" Binding="{Binding ExperienceYears, StringFormat={}{0:F1}}" Width="100"/>
+            <DataGridTextColumn Header="Надёжность (%)" Binding="{Binding Reliability, StringFormat={}{0:F1}%}" Width="130"/>
+            <DataGridTextColumn Header="Стоимость (₽)" Binding="{Binding SupplyCost, StringFormat={}{0:N2}}" Width="130"/>
+            <DataGridTextColumn Header="Скорость (дн.)" Binding="{Binding DeliverySpeedDays, StringFormat={}{0:F1}}" Width="120"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>
