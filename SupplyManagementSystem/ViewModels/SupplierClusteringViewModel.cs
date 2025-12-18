@@ -53,7 +53,7 @@ public partial class SupplierClusteringViewModel : ObservableObject
                 nameof(SupplierFeatures.Reliability),
                 nameof(SupplierFeatures.Cost),
                 nameof(SupplierFeatures.Speed))
-            .Append(ml.Clustering.Trainers.KMeans("Features", numberOfClusters: 4));
+            .Append(ml.Clustering.Trainers.KMeans("Features", numberOfClusters: 3));
 
         var model = pipeline.Fit(data);
         var predictor = ml.Model.CreatePredictionEngine<SupplierFeatures, SupplierClusterPrediction>(model);

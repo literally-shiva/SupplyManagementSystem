@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:SupplyManagementSystem.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SupplyManagementSystem.Views.SupplierAhpView"
+             x:DataType="vm:SupplierAhpViewModel">
+    
+    <UserControl.DataContext>
+        <vm:SupplierAhpViewModel/>
+    </UserControl.DataContext>
+
+<ScrollViewer>
+<Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="10" RowSpacing="10">
+
+    <TextBlock Text="Оцените, насколько первый критерий важнее второго (1=равно, больше 1=первый важнее, меньше 1=второй важнее)" 
+               FontWeight="Bold" TextWrapping="Wrap"/>
+
+    <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="5">
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Quality vs Reliability:" Width="200"/>
+            <TextBox Width="50" Text="{Binding QualityVsReliability, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Quality vs Experience:" Width="200"/>
+            <TextBox Width="50" Text="{Binding QualityVsExperience, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Quality vs Cost:" Width="200"/>
+            <TextBox Width="50" Text="{Binding QualityVsCost, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Quality vs Speed:" Width="200"/>
+            <TextBox Width="50" Text="{Binding QualityVsSpeed, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Reliability vs Experience:" Width="200"/>
+            <TextBox Width="50" Text="{Binding ReliabilityVsExperience, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Reliability vs Cost:" Width="200"/>
+            <TextBox Width="50" Text="{Binding ReliabilityVsCost, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Reliability vs Speed:" Width="200"/>
+            <TextBox Width="50" Text="{Binding ReliabilityVsSpeed, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Experience vs Cost:" Width="200"/>
+            <TextBox Width="50" Text="{Binding ExperienceVsCost, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Experience vs Speed:" Width="200"/>
+            <TextBox Width="50" Text="{Binding ExperienceVsSpeed, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Cost vs Speed:" Width="200"/>
+            <TextBox Width="50" Text="{Binding CostVsSpeed, Mode=TwoWay}"/>
+        </StackPanel>
+    </StackPanel>
+
+    <DataGrid Grid.Row="2" ItemsSource="{Binding Scores}" >
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Поставщик" Binding="{Binding Name}" Width="*" />
+            <DataGridTextColumn Header="Итоговый балл" Binding="{Binding TotalScore, StringFormat={}{0:F3}}" Width="120"/>
+        </DataGrid.Columns>
+    </DataGrid>
+
+    <TextBlock Grid.Row="3" Text="{Binding BestSupplier.Name, StringFormat=Лучший поставщик: {0}}" FontSize="18" FontWeight="Bold" Margin="0,10,0,0"/>
+    <TextBlock Grid.Row="4" Text="{Binding ConsistencyRatio, StringFormat=Consistency Ratio: {0:F2}}" FontSize="14" FontStyle="Italic"/>
+</Grid>
+</ScrollViewer>
+
+
+</UserControl>

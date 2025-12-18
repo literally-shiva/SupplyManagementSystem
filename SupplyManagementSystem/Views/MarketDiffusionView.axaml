@@ -11,7 +11,27 @@
         <vm:MarketDiffusionViewModel/>
     </UserControl.DataContext>
     
-    <Grid>
-        <Image Source="{Binding Bitmap}" Stretch="Fill"/>
+    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
+        <!-- Определяем строки и колонки -->
+
+        <!-- Изображение диффузии -->
+        <Image x:Name="DiffusionImage"
+               Source="{Binding Bitmap}"
+               Stretch="Uniform"
+               Grid.Row="0"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"/>
+
+        <!-- Панель для кнопок -->
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="1" 
+                    HorizontalAlignment="Right" 
+                    Margin="10">
+            <Button Content="Restart" 
+                    Command="{Binding RestartCommand}" 
+                    Width="100" 
+                    Height="30"/>
+        </StackPanel>
     </Grid>
+
 </UserControl>

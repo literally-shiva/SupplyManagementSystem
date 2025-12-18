@@ -19,14 +19,11 @@ public partial class MainWindowControlViewModel : ObservableObject
 
     private void InitializeTabs()
     {
-        Tabs.Add(new TabModel { Title = "Дашборд", Icon = "📊", Content = new UserControl() });
-        Tabs.Add(new TabModel { Title = "Заказы", Icon = "📦", Content = new UserControl() });
         Tabs.Add(new TabModel { Title = "Поставщики", Icon = "🏢", Content = new SuppliersView() });
-        Tabs.Add(new TabModel { Title = "Склад", Icon = "🏬", Content = new UserControl() });
-        Tabs.Add(new TabModel { Title = "Отчёты", Icon = "📈", Content = new UserControl() });
-        Tabs.Add(new TabModel { Title = "Настройки", Icon = "⚙️", Content = new UserControl() });
-        Tabs.Add(new TabModel { Title = "Кластеризация", Icon = "🧩", Content = new SupplierClusteringView() });
         Tabs.Add(new TabModel { Title = "Диффузия", Icon = "🌊", Content = new MarketDiffusionView() });
+        Tabs.Add(new TabModel { Title = "Кластеризация", Icon = "🧩", Content = new SupplierClusteringView() });
+        Tabs.Add(new TabModel { Title = "AHP-анализ", Icon = "🧠", Content = new SupplierAhpView() });
+
 
         SelectedTab = Tabs[0];
     }
