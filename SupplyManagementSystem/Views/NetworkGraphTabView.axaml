@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SupplyManagementSystem.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SupplyManagementSystem.Views.NetworkGraphTabView"
+             x:DataType="vm:NetworkGraphTabViewModel">
+    
+    <UserControl.DataContext>
+        <vm:NetworkGraphTabViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid RowDefinitions="*,*">
+        <!-- Таблица входных данных -->
+        <DataGrid ItemsSource="{Binding Tasks}" AutoGenerateColumns="False" Margin="5"
+                  CanUserResizeColumns="True" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="2*"/>
+                <DataGridTextColumn Header="Продолжительность" Binding="{Binding Duration}" Width="*"/>
+                <DataGridTextColumn Header="Предшественники" Binding="{Binding Predecessors}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Таблица результатов -->
+        <DataGrid ItemsSource="{Binding Results}" AutoGenerateColumns="False" Margin="5" Grid.Row="1"
+                  CanUserResizeColumns="True"
+                  ColumnWidth="*"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="2*"/>
+                <DataGridTextColumn Header="Продолжительность" Binding="{Binding Duration}" Width="*"/>
+                <DataGridTextColumn Header="ES" Binding="{Binding EarliestStart}" Width="*"/>
+                <DataGridTextColumn Header="EF" Binding="{Binding EarliestFinish}" Width="*"/>
+                <DataGridTextColumn Header="LS" Binding="{Binding LatestStart}" Width="*"/>
+                <DataGridTextColumn Header="LF" Binding="{Binding LatestFinish}" Width="*"/>
+                <DataGridTextColumn Header="Полный резерв" Binding="{Binding TotalFloat}" Width="*"/>
+                <DataGridTextColumn Header="Свободный резерв" Binding="{Binding FreeFloat}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Критическая" Binding="{Binding IsCritical}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -22,8 +22,10 @@ public partial class MainWindowControlViewModel : ObservableObject
         Tabs.Add(new TabModel { Title = "Поставщики", Icon = "🏢", Content = new SuppliersView() });
         Tabs.Add(new TabModel { Title = "Диффузия", Icon = "🌊", Content = new MarketDiffusionView() });
         Tabs.Add(new TabModel { Title = "Кластеризация", Icon = "🧩", Content = new SupplierClusteringView() });
-        Tabs.Add(new TabModel { Title = "AHP-анализ", Icon = "🧠", Content = new SupplierAhpView() });
-
+        Tabs.Add(new TabModel { Title = "МАИ-анализ", Icon = "🧠", Content = new SupplierAhpView() });
+        Tabs.Add(new TabModel { Title = "Линейное программирование", Icon = "📊", Content = new TransportationProblemView() });
+        Tabs.Add(new TabModel { Title = "Дисперсия", Icon = "📈", Content = new AnovaView() });
+        Tabs.Add(new TabModel { Title = "Сетевое планирование", Icon = "📅", Content = new NetworkGraphTabView() });
 
         SelectedTab = Tabs[0];
     }

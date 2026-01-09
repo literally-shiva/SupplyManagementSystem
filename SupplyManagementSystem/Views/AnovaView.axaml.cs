@@ -1,10 +1,12 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
 namespace SupplyManagementSystem.Views;
 
-public partial class SupplierAhpView : UserControl
+public partial class AnovaView : UserControl
 {
-    public SupplierAhpView()
+    public AnovaView()
     {
         InitializeComponent();
     }

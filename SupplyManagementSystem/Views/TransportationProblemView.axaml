@@ -1,0 +1,126 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SupplyManagementSystem.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SupplyManagementSystem.Views.TransportationProblemView"
+             x:DataType="vm:TransportationViewModel">
+
+    <UserControl.DataContext>
+        <vm:TransportationViewModel/>
+    </UserControl.DataContext>
+
+    <Grid Margin="10"
+          RowDefinitions="2*,2*,Auto,2*"
+          ColumnDefinitions="*,*">
+
+        <!-- Склады -->
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Margin="5"
+                Padding="6"
+                BorderThickness="1"
+                BorderBrush="Gray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Склады (поставщики)"
+                           FontWeight="Bold"
+                           Margin="0,0,0,6"/>
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding Warehouses}"
+                          AutoGenerateColumns="True"
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+
+        <!-- Объекты -->
+        <Border Grid.Row="0"
+                Grid.Column="1"
+                Margin="5"
+                Padding="6"
+                BorderThickness="1"
+                BorderBrush="Gray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Объекты (потребители)"
+                           FontWeight="Bold"
+                           Margin="0,0,0,6"/>
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding Projects}"
+                          AutoGenerateColumns="True"
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+
+        <!-- Стоимости -->
+        <Border Grid.Row="1"
+                Grid.ColumnSpan="2" Grid.Column="0"
+                Margin="5"
+                Padding="6"
+                BorderThickness="1"
+                BorderBrush="Gray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Стоимость перевозки"
+                           FontWeight="Bold"
+                           Margin="0,0,0,6"/>
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding TransportationCosts}"
+                          AutoGenerateColumns="True"
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2" Grid.Column="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Content="Обновить"
+                    Margin="5"
+                    Command="{Binding LoadDataCommand}"/>
+            <Button Content="Рассчитать"
+                    Margin="5"
+                    Command="{Binding SolveTransportationCommand}"/>
+        </StackPanel>
+
+        <!-- Результат -->
+        <Border Grid.Row="3"
+                Grid.ColumnSpan="2" Grid.Column="0"
+                Margin="5"
+                Padding="6"
+                BorderThickness="1"
+                BorderBrush="Gray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Оптимальный план перевозок"
+                           FontWeight="Bold"
+                           Margin="0,0,0,6"/>
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding Results}"
+                          AutoGenerateColumns="True"
+                          IsReadOnly="True"
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>
