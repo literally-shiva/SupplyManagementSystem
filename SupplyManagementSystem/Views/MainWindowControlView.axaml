@@ -8,31 +8,25 @@
         <StyleInclude Source="/Views/Styles.axaml"/>
     </UserControl.Styles>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <!-- Левая панель с вкладками -->
-        <ListBox Grid.Column="0"
-                 ItemsSource="{Binding Tabs}"
-                 SelectedItem="{Binding SelectedTab}"
-                 BorderThickness="0">
-            <ListBox.ItemTemplate>
-                <DataTemplate x:DataType="vm:TabModel">
-                    <StackPanel Orientation="Horizontal" Margin="5" Spacing="6">
-                        <TextBlock Text="{Binding Icon}" FontSize="16"/>
-                        <TextBlock Text="{Binding Title}" FontSize="14" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
+    <Grid ColumnDefinitions="Auto, 5, *">
+        <DockPanel>
+            <Image DockPanel.Dock="Top" Source="avares://SupplyManagementSystem/Assets/companyLogo.png" Width="128" Height="128"/>
+            <ListBox DockPanel.Dock="Top"
+                    ItemsSource="{Binding Tabs}"
+                     SelectedItem="{Binding SelectedTab}"
+                     BorderThickness="0"
+                     Padding="0,10,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="vm:TabModel">
+                        <StackPanel Orientation="Horizontal" Margin="5" Spacing="6">
+                            <TextBlock Text="{Binding Icon}" FontSize="16"/>
+                            <TextBlock Text="{Binding Title}" FontSize="14" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
         <GridSplitter Grid.Column="1" Width="5" Cursor="SizeWestEast"/>
-
-        <!-- Правая область с контентом выбранной вкладки -->
         <ContentControl Grid.Column="2" Content="{Binding SelectedTab.Content}"/>
     </Grid>
 </UserControl>
